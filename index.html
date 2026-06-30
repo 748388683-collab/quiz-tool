@@ -1133,15 +1133,16 @@ let examState = null;
 
 function beginExam(){
   const count = parseInt(document.getElementById('examCount').value);
-  const types = ['single','multiple','judge','essay'];
+  const activeBtns=document.querySelectorAll('#examTypeToggles .exam-type-btn.active');
+  if(activeBtns.length===0){alert('请至少选择一种题型');return}
+  const types=Array.from(activeBtns).map(b=>b.dataset.type);
   const pool = [];
-  // proportionally sample from each type
-  const perType = Math.ceil(count/types.length);
+  const perType = Math.ceil(count/types.length) + 2;
   types.forEach(t=>{
     const qs = shuffle(byType(t));
     pool.push(...qs.slice(0,perType));
   });
-  const final = shuffle(pool).slice(0,count);
+  const final = shuffle(pool).slice(0, Math.min(count, pool.length));
   examState = {
     questions: final,
     answers: new Map(), // qid -> user answer
