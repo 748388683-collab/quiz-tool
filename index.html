@@ -199,6 +199,7 @@ input,textarea,select{font-family:inherit;font-size:inherit}
     <a data-view="exam">模拟考试</a>
     <a data-view="wrong-practice">错题本</a>
     <a data-view="practice">分类练习</a>
+    <a data-view="browse">题库浏览</a>
   </div>
   <div class="nav-stats" id="navStats"></div>
 </nav>
@@ -227,18 +228,24 @@ input,textarea,select{font-family:inherit;font-size:inherit}
   <div id="practiceContent"></div>
 </div>
 
+
+<!-- browse -->
+<div id="view-browse" class="view">
+  <div id="browseContent"></div>
+</div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
 // ── Question Bank ──────────────────────────────────────────────
-// Question bank auto-generated from docx
+// Auto-generated from docx v2
 const QUESTION_BANK = [
   {
     id: 's1',
     type: 'single',
-    question: '美的冷柜下逆循环采用上密下疏绕管方式，冷气沿管道由底部（）输送',
+    section: '冷柜',
+    question: '美的冷柜下逆循环采用上密下疏绕管方式，冷气沿管道由底部输送',
     options: {A: '由下向上', B: '由上向下', C: '由左向右', D: '由右向左'},
     answer: 'A',
     explanation: '正确答案：A',
@@ -246,6 +253,7 @@ const QUESTION_BANK = [
   {
     id: 's2',
     type: 'single',
+    section: '冷柜',
     question: '美的“无霜”系列冷柜的核心技术是哪一项？',
     options: {A: '手动除霜系统', B: '压缩机制冷', C: 'DM-D双驱风冷科技，实现立体循环无霜冻', D: '增加隔热层厚度'},
     answer: 'C',
@@ -254,6 +262,7 @@ const QUESTION_BANK = [
   {
     id: 's3',
     type: 'single',
+    section: '冷柜',
     question: '“D+下逆制冷系统”中“D型蒸发器”的优势在于？',
     options: {A: '采用点接触制冷，成本低', B: '面接触制冷，效率高、速度更快、更节能', C: '管道排列更简单', D: '仅用于高端型号'},
     answer: 'B',
@@ -262,6 +271,7 @@ const QUESTION_BANK = [
   {
     id: 's4',
     type: 'single',
+    section: '华凌',
     question: '华凌冰箱神机2代标准版518冷藏室采用的哪项净味技术？',
     options: {A: 'PT离子净化', B: '活性炭吸附', C: '活氧离子净化', D: '紫外线杀菌'},
     answer: 'C',
@@ -270,6 +280,7 @@ const QUESTION_BANK = [
   {
     id: 's5',
     type: 'single',
+    section: '华凌',
     question: '华凌冰箱神机2代标准版518嵌入安装时，两侧各需预留多少毫米？',
     options: {A: '1mm', B: '2mm', C: '3mm', D: '4mm'},
     answer: 'C',
@@ -278,6 +289,7 @@ const QUESTION_BANK = [
   {
     id: 's6',
     type: 'single',
+    section: '华凌',
     question: '以下描述活氧离子净化功能错误的是？',
     options: {A: '除菌', B: '除病毒', C: '除甲醛', D: '除农残'},
     answer: 'C',
@@ -286,14 +298,16 @@ const QUESTION_BANK = [
   {
     id: 's7',
     type: 'single',
-    question: '东芝大白梨528/529全新升级雾化保鲜4.0，可使果蔬保鲜多少天？',
+    section: '东芝',
+    question: '东芝大白梨528/529全新升级雾化保鲜4.0，可使果蔬保鲜多少天？（ D ）A. 3天B. 5天C. 7天D. 14天2、东芝大白梨638/639/528/529/542均搭载60分钟急速洁净制冰，制冰不仅快，更拥有三重洁净，以下关于三重洁净描述错误的是（ A ）A. 2分钟自动清洗1次B. 2分钟自动清洗2次C. 99.99.99%UV除菌D. 99.99%抗菌储水盒&制冰格3、东芝品牌起源于1875年，距今已有151年的品牌历史，作为亚洲首台冰箱制造者，其首台冰箱是在年带来的？',
     options: {A: '1988', B: '2005', C: '1930', D: '1927'},
-    answer: 'D',
-    explanation: '正确答案：D',
+    answer: 'C',
+    explanation: '正确答案：C',
   },
   {
     id: 's8',
     type: 'single',
+    section: '508pro（全网）（天猫）',
     question: 'MR-508WUSPZEA的净化技术搭载的是',
     options: {A: '全净PST+7.0', B: '冷藏PST+智能净化和冷冻PT离子净化', C: '冷藏搭载PT离子净化', D: '全空间PT离子净化'},
     answer: 'B',
@@ -302,6 +316,7 @@ const QUESTION_BANK = [
   {
     id: 's9',
     type: 'single',
+    section: '508pro（全网）（天猫）',
     question: 'MR-508WUSPZEA两侧的安装预留尺寸是',
     options: {A: '两侧仅需各预留2mm', B: '两侧仅需各预留5mm', C: '两侧仅需各预留4mm', D: '两侧仅需各预留8mm'},
     answer: 'C',
@@ -310,6 +325,7 @@ const QUESTION_BANK = [
   {
     id: 's10',
     type: 'single',
+    section: '508pro（全网）（天猫）',
     question: 'PT离子净化可以实现',
     options: {A: '抗菌、抗病毒 、净味、0级防霉、保鲜五效合一', B: '99.99%除菌', C: '99.9999%除菌', D: '九效合一'},
     answer: 'A',
@@ -318,6 +334,7 @@ const QUESTION_BANK = [
   {
     id: 'm11',
     type: 'multiple',
+    section: '508pro（全网）（天猫）',
     question: '以下关于MR-508WUSPZEA描述正确的是',
     options: {A: '双系统冰箱', B: '纯平全嵌冰箱', C: '搭载超净光波养鲜', D: '整机预留尺寸为900*600*1918mm'},
     answer: ["A", "B"],
@@ -326,6 +343,7 @@ const QUESTION_BANK = [
   {
     id: 'm12',
     type: 'multiple',
+    section: '508pro（全网）（天猫）',
     question: '关于双系统冰箱说法正确的是',
     options: {A: '高保湿', B: '不串味', C: '制冷快', D: '制冷慢'},
     answer: ["A", "B", "C"],
@@ -334,6 +352,7 @@ const QUESTION_BANK = [
   {
     id: 'm13',
     type: 'multiple',
+    section: '508pro（全网）（天猫）',
     question: '关于美的冷冻超智能恒温描述正确的是',
     options: {A: '硬件+软件升级', B: '布局32项专利', C: '搭载风机遮蔽技术', D: '冷冻食材温度波动≤0.9℃'},
     answer: ["A", "B", "D"],
@@ -342,14 +361,16 @@ const QUESTION_BANK = [
   {
     id: 'e14',
     type: 'essay',
+    section: '508pro（全网）（天猫）',
     question: '列举美的MR-508WUSPZEA搭载的5个功能卖点',
-    answer: '冷藏PST+智能净化、（双系统2.0）双系统、冷冻超智能恒温、纯平全嵌、冷冻PT离子净化、超智能系统、三档变温空间、高保湿空间等 530（京东）',
-    keywords: ["纯平全嵌", "冷冻超智能恒温", "高保湿空间等", "三档变温空间", "530", "京东", "超智能系统", "冷藏PST+智能净化", "双系统", "冷冻PT离子净化", "双系统2.0"],
-    explanation: '冷藏PST+智能净化、（双系统2.0）双系统、冷冻超智能恒温、纯平全嵌、冷冻PT离子净化、超智能系统、三档变温空间、高保湿空间等 530（京东）',
+    answer: '冷藏PST+智能净化、（双系统2.0）双系统、冷冻超智能恒温、纯平全嵌、冷冻PT离子净化、超智能系统、三档变温空间、高保湿空间等',
+    keywords: ["冷冻超智能恒温", "高保湿空间等", "超智能系统", "冷藏PST+智能净化", "纯平全嵌", "双系统2.0", "冷冻PT离子净化", "三档变温空间", "双系统"],
+    explanation: '冷藏PST+智能净化、（双系统2.0）双系统、冷冻超智能恒温、纯平全嵌、冷冻PT离子净化、超智能系统、三档变温空间、高保湿空间等',
   },
   {
     id: 's15',
     type: 'single',
+    section: '530（京东）',
     question: '美的小冰狗 MR-530WUFPZE流光白的净化技术搭载的是',
     options: {A: '全净PST+7.0', B: '仅冷藏搭载PST+智能净化', C: '仅冷藏搭载PT离子净化', D: '全空间PT离子净化'},
     answer: 'A',
@@ -358,6 +379,7 @@ const QUESTION_BANK = [
   {
     id: 's16',
     type: 'single',
+    section: '530（京东）',
     question: '关于PST+智能净化，描述错误的是',
     options: {A: '3分钟净味', B: '99.9999%除菌', C: '六效合一', D: '去除200余种有害物质'},
     answer: 'C',
@@ -366,6 +388,7 @@ const QUESTION_BANK = [
   {
     id: 's17',
     type: 'single',
+    section: '530（京东）',
     question: '美的小冰狗 MR-530WUFPZE流光白的安装预留尺寸是',
     options: {A: '792*600*1910mm', B: '800*600*1918mm', C: '892*600*1910mm', D: '900*600*1918mm'},
     answer: 'B',
@@ -374,6 +397,7 @@ const QUESTION_BANK = [
   {
     id: 'j18',
     type: 'judge',
+    section: '530（京东）',
     question: '美的小冰狗 MR-530WUFPZE流光白是双系统的冰箱',
     answer: true,
     explanation: '正确答案：对',
@@ -381,6 +405,7 @@ const QUESTION_BANK = [
   {
     id: 'j19',
     type: 'judge',
+    section: '530（京东）',
     question: '美的小冰狗 MR-530WUFPZE流光白冷藏的两个功能抽屉是变温空间和保湿空间',
     answer: true,
     explanation: '正确答案：对',
@@ -388,6 +413,7 @@ const QUESTION_BANK = [
   {
     id: 'j20',
     type: 'judge',
+    section: '530（京东）',
     question: '超净光波养鲜可以实现9分钟对内胆、搁架、食材表面病菌杀菌率99.999%',
     answer: true,
     explanation: '正确答案：对',
@@ -395,6 +421,7 @@ const QUESTION_BANK = [
   {
     id: 's21',
     type: 'single',
+    section: '519（天猫）',
     question: '美的可爱多冰箱 MR-519WUSPZE云隐白安装预留尺寸是',
     options: {A: '792*600*1910mm', B: '800*600*1918mm', C: '892*600*1910mm', D: '900*600*1918mm'},
     answer: 'B',
@@ -403,6 +430,7 @@ const QUESTION_BANK = [
   {
     id: 's22',
     type: 'single',
+    section: '519（天猫）',
     question: '美的可爱多冰箱 MR-519WUSPZE云隐白最低温度可以达到',
     options: {A: '-30℃', B: '-24℃', C: '-18℃', D: '-40℃'},
     answer: 'A',
@@ -411,6 +439,7 @@ const QUESTION_BANK = [
   {
     id: 's23',
     type: 'single',
+    section: '519（天猫）',
     question: '关于全净PST+7.0描述错误的是',
     options: {A: '冷藏冷冻都搭载PST+智能净化', B: '冷藏与冷冻净化效果一致', C: '冷冻升级耐低温超磁感电场放电和耐低温续航模组', D: '可以杀死所有的细菌病毒'},
     answer: 'D',
@@ -419,6 +448,7 @@ const QUESTION_BANK = [
   {
     id: 'j24',
     type: 'judge',
+    section: '519（天猫）',
     question: '双系统2.0包含独立双系统+冷冻超智能恒温',
     answer: true,
     explanation: '正确答案：对',
@@ -426,6 +456,7 @@ const QUESTION_BANK = [
   {
     id: 'j25',
     type: 'judge',
+    section: '519（天猫）',
     question: '冷冻超智能恒温，可以实现食材温度波动≤0.9°C、挥发性盐基氮变化率 ≤ 8.9%、汁液流失率 ≤ 1.82%',
     answer: true,
     explanation: '正确答案：对',
@@ -433,6 +464,7 @@ const QUESTION_BANK = [
   {
     id: 'j26',
     type: 'judge',
+    section: '519（天猫）',
     question: '美的可爱多冰箱 MR-519WUSPZE云隐白变温空间的三个模式包含：珍品、零度、冷冻',
     answer: false,
     explanation: '正确答案：错',
@@ -440,6 +472,7 @@ const QUESTION_BANK = [
   {
     id: 's27',
     type: 'single',
+    section: '新国标',
     question: '本次冰箱两项新国标正式实施是在哪一天',
     options: {A: '2026年6月1日', B: '2025年6月1日', C: '2026年9月1日', D: '2026年8月1日'},
     answer: 'A',
@@ -448,6 +481,7 @@ const QUESTION_BANK = [
   {
     id: 's28',
     type: 'single',
+    section: '新国标',
     question: '2015老国标对应的冰箱产品可以销售到',
     options: {A: '2028年5月31日', B: '2026年6月1日', C: '2027年5月31日', D: '2030年5月31日'},
     answer: 'A',
@@ -456,6 +490,7 @@ const QUESTION_BANK = [
   {
     id: 's29',
     type: 'single',
+    section: '新国标',
     question: '消费者可以在机身的什么位置看到新国标的显示',
     options: {A: '能效标识贴', B: '铭牌', C: '冰箱内部贴纸', D: '冰箱包装箱'},
     answer: 'A',
@@ -464,6 +499,7 @@ const QUESTION_BANK = [
   {
     id: 's30',
     type: 'single',
+    section: '新国标',
     question: '美的冰箱搭载的高精度传感器，精度可以达到',
     options: {A: '±0.1℃', B: '±1℃', C: '±0.5℃', D: '±5℃'},
     answer: 'A',
@@ -472,6 +508,7 @@ const QUESTION_BANK = [
   {
     id: 's31',
     type: 'single',
+    section: '新国标',
     question: 'VIP真空保温材料的厚度是普通发泡层厚度的',
     options: {A: '三分之一', B: '三倍', C: '十分之一', D: '十倍'},
     answer: 'A',
@@ -480,6 +517,7 @@ const QUESTION_BANK = [
   {
     id: 'm32',
     type: 'multiple',
+    section: '新国标',
     question: '关于冷冻超智能恒温说法正确的是',
     options: {A: '蒸发器采用石墨烯材料+疏水涂层', B: '化霜温升降低22%', C: '大幅减少化霜过程的能耗损失', D: '美的冰箱暂无机型搭载'},
     answer: ["A", "B", "C"],
@@ -488,6 +526,7 @@ const QUESTION_BANK = [
   {
     id: 'm33',
     type: 'multiple',
+    section: '新国标',
     question: '以下关于美的系冰箱在本次新国标实施中的优势，描述正确的是',
     options: {A: '新国标一级能效产品数量位居行业第三', B: '更节能', C: '更高容', D: '更智能'},
     answer: ["B", "C", "D"],
@@ -496,6 +535,7 @@ const QUESTION_BANK = [
   {
     id: 'm34',
     type: 'multiple',
+    section: '新国标',
     question: '下列哪些是美的系冰箱在高容领域布局的核心技术',
     options: {A: 'VIP真空绝热板', B: '中置制冷系统', C: '微型高能压缩机', D: '背置蒸发器'},
     answer: ["A", "B", "C"],
@@ -504,6 +544,7 @@ const QUESTION_BANK = [
   {
     id: 'j35',
     type: 'judge',
+    section: '新国标',
     question: '在本次新国标实施中，美的提前布局的智能技术有超智能省电、超智能修复、超智能助理',
     answer: true,
     explanation: '正确答案：对',
@@ -511,6 +552,7 @@ const QUESTION_BANK = [
   {
     id: 'j36',
     type: 'judge',
+    section: '新国标',
     question: '本次冰箱的能效标准升级到了“节能+智能+高容”综合能力的要求',
     answer: true,
     explanation: '正确答案：对',
@@ -518,6 +560,7 @@ const QUESTION_BANK = [
   {
     id: 'j37',
     type: 'judge',
+    section: '新国标',
     question: '在智能领域，美的冰箱提前布局，主导四大权威标准制定',
     answer: true,
     explanation: '正确答案：对',
@@ -525,15 +568,17 @@ const QUESTION_BANK = [
   {
     id: 'e38',
     type: 'essay',
+    section: '新国标',
     question: '2026年6月1日，能效和性能标准实施后，对于冰箱企业的生产和销售有什么影响',
-    answer: '生产：2026年6月1日之后生产的产品必须满足新国标 销售：2015版能效标识的产品可以销售到2028年5月31日 国家“以旧换新”补贴明确1级能效产品 633山海',
-    keywords: ["销售", "2015版能效标识的产品可以销售到2028年5月31日", "633山海", "生产", "国家“以旧换新”补贴明确1级能效产品", "2026年6月1日之后生产的产品必须满足新国标"],
-    explanation: '生产：2026年6月1日之后生产的产品必须满足新国标 销售：2015版能效标识的产品可以销售到2028年5月31日 国家“以旧换新”补贴明确1级能效产品 633山海',
+    answer: '生产：2026年6月1日之后生产的产品必须满足新国标 销售：2015版能效标识的产品可以销售到2028年5月31日',
+    keywords: ["2015版能效标识的产品可以销售到2028年5月31日", "销售", "2026年6月1日之后生产的产品必须满足新国标", "生产"],
+    explanation: '生产：2026年6月1日之后生产的产品必须满足新国标 销售：2015版能效标识的产品可以销售到2028年5月31日',
   },
   {
     id: 's39',
     type: 'single',
-    question: '该冰箱的整机深度为多少',
+    section: '633山海',
+    question: '该冰箱（633山海）的整机深度为多少',
     options: {A: '550mm', B: '600mm', C: '650mm', D: '700mm'},
     answer: 'B',
     explanation: '正确答案：B',
@@ -541,6 +586,7 @@ const QUESTION_BANK = [
   {
     id: 's40',
     type: 'single',
+    section: '633山海',
     question: '以下哪个不属于该冰箱的变温空间模式？',
     options: {A: '母婴', B: '珍品', C: '零度', D: '速冻'},
     answer: 'D',
@@ -549,6 +595,7 @@ const QUESTION_BANK = [
   {
     id: 's41',
     type: 'single',
+    section: '633山海',
     question: '关于633山海冰箱搭载的PST+智能净化技术，以下说法正确的是？',
     options: {A: '3分钟急速净味，99.9999% 除菌除病毒，九效合一，净除 200 余种有害物质', B: '9分钟急速净味，99.9999% 除菌除病毒，九效合一，净除 200 余种有害物质', C: '3分钟急速净味，99.9999% 除菌除病毒，七效合一，净除 200 余种有害物质', D: '9分钟急速净味，99.9999% 除菌除病毒，七效合一，净除 200 余种有害物质'},
     answer: 'A',
@@ -557,6 +604,7 @@ const QUESTION_BANK = [
   {
     id: 'j42',
     type: 'judge',
+    section: '633山海',
     question: '冷藏室和冷冻室均搭载了PST+智能净化技术',
     answer: true,
     explanation: '正确答案：对',
@@ -564,6 +612,7 @@ const QUESTION_BANK = [
   {
     id: 'j43',
     type: 'judge',
+    section: '633山海',
     question: '该冰箱配有自动制冰功能，且储水盒和制冰格具有抗菌效果',
     answer: true,
     explanation: '正确答案：对',
@@ -571,6 +620,7 @@ const QUESTION_BANK = [
   {
     id: 'j44',
     type: 'judge',
+    section: '633山海',
     question: '该冰箱搭载的为全景面光源',
     answer: false,
     explanation: '正确答案：错',
@@ -578,15 +628,17 @@ const QUESTION_BANK = [
   {
     id: 'e45',
     type: 'essay',
+    section: '633山海',
     question: '请简述633山海冰箱核心功能买点，不少于五个',
-    answer: '山海米中式美学面板、全净PST+7.0、双系统2.0、超净光波养鲜、自动制冰、三档变温空间、-30℃深冷锁鲜、生态果园 628题目',
-    keywords: ["-30℃深冷锁鲜", "山海米中式美学面板", "超净光波养鲜", "全净PST+7.0", "628题目", "三档变温空间", "自动制冰", "双系统2.0", "生态果园"],
-    explanation: '山海米中式美学面板、全净PST+7.0、双系统2.0、超净光波养鲜、自动制冰、三档变温空间、-30℃深冷锁鲜、生态果园 628题目',
+    answer: '山海米中式美学面板、全净PST+7.0、双系统2.0、超净光波养鲜、自动制冰、三档变温空间、-30℃深冷锁鲜、生态果园',
+    keywords: ["超净光波养鲜", "生态果园", "山海米中式美学面板", "双系统2.0", "全净PST+7.0", "自动制冰", "三档变温空间", "-30℃深冷锁鲜"],
+    explanation: '山海米中式美学面板、全净PST+7.0、双系统2.0、超净光波养鲜、自动制冰、三档变温空间、-30℃深冷锁鲜、生态果园',
   },
   {
     id: 's46',
     type: 'single',
-    question: '该冰箱的预留安装尺寸（宽×深×高）为？',
+    section: '628题目',
+    question: '该冰箱（628）的预留安装尺寸（宽×深×高）为？',
     options: {A: '892×600×1910mm', B: '900×600×1910mm', C: '892×600×1918mm', D: '900×600×1918mm'},
     answer: 'D',
     explanation: '正确答案：D',
@@ -594,6 +646,7 @@ const QUESTION_BANK = [
   {
     id: 's47',
     type: 'single',
+    section: '628题目',
     question: '关于“-30℃深冷锁鲜”技术的作用，以下描述正确的是？',
     options: {A: '使食材完全脱水，延长保质期', B: '更快穿过冰晶生成带，保留口感与营养', C: '通过高温杀菌后急速冷却', D: '仅用于冷冻室除霜'},
     answer: 'B',
@@ -602,6 +655,7 @@ const QUESTION_BANK = [
   {
     id: 'j49',
     type: 'judge',
+    section: '628题目',
     question: '该冰箱面板采用纯白精雕设计，材质为钢板，可贴冰箱贴且防指纹',
     answer: true,
     explanation: '正确答案：对',
@@ -609,6 +663,7 @@ const QUESTION_BANK = [
   {
     id: 'j50',
     type: 'judge',
+    section: '628题目',
     question: '628冷藏冷冻均搭载PST+智能净化技术',
     answer: false,
     explanation: '正确答案：错',
@@ -616,6 +671,7 @@ const QUESTION_BANK = [
   {
     id: 'j51',
     type: 'judge',
+    section: '628题目',
     question: '三档变温空间为母婴、珍品、零度三种模式',
     answer: true,
     explanation: '正确答案：对',
@@ -623,14 +679,16 @@ const QUESTION_BANK = [
   {
     id: 'e52',
     type: 'essay',
+    section: '628题目',
     question: '请详细概述PST+智能净化销售话术',
-    answer: '超磁感电解离子及SAC单原子催化双重作用， 破坏有害分子表面的蛋白结构 ，使其失去活性，可达到3分钟急速净味，99.9999%除菌，九效合一 ，净除200余种有害物质， （覆盖红色字部分视为正确） 全净 PST+7.0',
-    keywords: ["超磁感电解离子及SAC单原子催化双重作用", "使其失去活性", "九效合一", "PST+7.0", "可达到3分钟急速净味", "净除200余种有害物质", "破坏有害分子表面的蛋白结构", "99.9999%除菌", "全净", "覆盖红色字部分视为正确"],
-    explanation: '超磁感电解离子及SAC单原子催化双重作用， 破坏有害分子表面的蛋白结构 ，使其失去活性，可达到3分钟急速净味，99.9999%除菌，九效合一 ，净除200余种有害物质， （覆盖红色字部分视为正确） 全净 PST+7.0',
+    answer: '超磁感电解离子及SAC单原子催化双重作用， 破坏有害分子表面的蛋白结构 ，使其失去活性，可达到3分钟急速净味，99.9999%除菌，九效合一 ，净除200余种有害物质，',
+    keywords: ["破坏有害分子表面的蛋白结构", "可达到3分钟急速净味", "99.9999%除菌", "净除200余种有害物质", "使其失去活性", "九效合一", "超磁感电解离子及SAC单原子催化双重作用"],
+    explanation: '超磁感电解离子及SAC单原子催化双重作用， 破坏有害分子表面的蛋白结构 ，使其失去活性，可达到3分钟急速净味，99.9999%除菌，九效合一 ，净除200余种有害物质，',
   },
   {
     id: 's57',
     type: 'single',
+    section: '全净 PST+7.0',
     question: '关于容声 IDP 主动除菌与美的全净 PST+7.0 离子释放量对比，说法正确的是',
     options: {A: '容声 IDP 离子量更高', B: '美的 PST+7.0 离子量 4000W+，优于容声 3000W+', C: '两者离子释放量完全一致', D: '无检测数据可对比'},
     answer: 'B',
@@ -639,6 +697,7 @@ const QUESTION_BANK = [
   {
     id: 'm59',
     type: 'multiple',
+    section: '全净 PST+7.0',
     question: '美的 PST+7.0 对比容声 IDP 主动除菌，核心硬件优势包含',
     options: {A: '4000W + 超高电解离子释放量', B: '全域空气净化', C: '独有低温续航模组，-40℃稳定运行', D: '无风机辅助，依靠侧置催化模块净化'},
     answer: ["A", "B", "C"],
@@ -647,6 +706,7 @@ const QUESTION_BANK = [
   {
     id: 'm60',
     type: 'multiple',
+    section: '全净 PST+7.0',
     question: '以下属于美的全净 PST+7.0 权威技术背书与标准的有',
     options: {A: '联合 CICC 建立冰箱菌种资源库', B: '主导多项冰箱净化相关团体标准', C: '拥有马来国家标准 SIRIM 认证', D: '多项技术获评国际领先成果鉴定'},
     answer: ["A", "B", "C", "D"],
@@ -655,6 +715,7 @@ const QUESTION_BANK = [
   {
     id: 'j61',
     type: 'judge',
+    section: '全净 PST+7.0',
     question: '美的 PST+7.0 是行业唯一实现冷冻、冷藏除菌净化效果数据完全一致的净化技术',
     answer: true,
     explanation: '正确答案：对',
@@ -662,6 +723,7 @@ const QUESTION_BANK = [
   {
     id: 'j62',
     type: 'judge',
+    section: '全净 PST+7.0',
     question: '容声 IDP 主动除菌采用超磁感电场放电，释放 4000W + 离子，离子量高于美的全净 PST+7.0',
     answer: false,
     explanation: '正确答案：错',
@@ -669,6 +731,7 @@ const QUESTION_BANK = [
   {
     id: 'j63',
     type: 'judge',
+    section: '全净 PST+7.0',
     question: '美的全净 PST+7.0 净化模块不接入冰箱主风路，仅局部净化，无法覆盖全舱食材',
     answer: false,
     explanation: '正确答案：错',
@@ -676,14 +739,16 @@ const QUESTION_BANK = [
   {
     id: 'e64',
     type: 'essay',
+    section: '全净 PST+7.0',
     question: '请简述美的冰箱全净 PST+7.0 核心技术优势',
-    answer: '离子释放量领先：采用超磁感电场放电，低温环境稳定释放 4000W + 电解离子，远超容声 IDP 3000W + 离子量； 全域同步净化：冷藏冷冻均 3 分钟急速净味，行业唯一冷藏、冷冻除菌净化效果一致，模块串联主风路，全舱空气洁净； 超低温稳定运行：搭载原创低温续航模组，-40℃冷冻环境下可持续稳定净化，竞品无对应能力； 九效全能净化：除菌除病毒、除异味、除乙烯、除农残、防霉、防腐败，去除 200 余种冰箱有害物质，各类污染物去除率超 99%； 双系统 2.0',
-    keywords: ["去除", "全域同步净化", "离子释放量领先", "低温环境稳定释放", "竞品无对应能力", "行业唯一冷藏", "除菌除病毒", "防腐败", "-40℃冷冻环境下可持续稳定净化", "余种冰箱有害物质", "九效全能净化", "模块串联主风路", "搭载原创低温续航模组", "冷藏冷冻均", "分钟急速净味"],
+    answer: '离子释放量领先：采用超磁感电场放电，低温环境稳定释放 4000W + 电解离子，远超容声 IDP 3000W + 离子量； 全域同步净化：冷藏冷冻均 3 分钟急速净味，行业唯一冷藏、冷冻除菌净化效果一致，模块串联主风路，全舱空气洁净； 超低温稳定运行：搭载原创低温续航模组，-40℃冷冻环境下可持续稳定净化，竞品无对应能力； 九效全能净化：除菌除病毒、除异味、除乙烯、除农残、防霉、防腐败，去除 200 余种冰箱有害物质，各类污染物去除率超 99%；',
+    keywords: ["模块串联主风路", "全域同步净化", "除异味", "分钟急速净味", "超低温稳定运行", "冷冻除菌净化效果一致", "除乙烯", "各类污染物去除率超", "全舱空气洁净", "99%", "防霉", "采用超磁感电场放电", "行业唯一冷藏", "除农残", "余种冰箱有害物质"],
     explanation: '离子释放量领先：采用超磁感电场放电，低温环境稳定释放 4000W + 电解离子，远超容声 IDP 3000W + 离子量； 全域同步净化：冷藏冷冻均 3 分钟急速净味，行业唯一冷藏、冷冻除菌净化效果一致，模块串联主风路，全舱空气洁净； 超低温稳定运行：搭载原创低温续航模组，-40℃冷冻环境下可持续稳定净化，竞品无对应能力； 九效全能净化：除菌除病毒、除异味、除乙烯、除农残、防霉、防腐败，去除 20...',
   },
   {
     id: 's65',
     type: 'single',
+    section: '双系统 2.0',
     question: '美的双系统 2.0 在冷冻蒸发器上新增的材料是',
     options: {A: '普通铝片', B: '航天级石墨烯导热及疏水材料', C: '塑料', D: '不锈钢'},
     answer: 'B',
@@ -692,6 +757,7 @@ const QUESTION_BANK = [
   {
     id: 's66',
     type: 'single',
+    section: '双系统 2.0',
     question: '美的双系统 2.0 冷冻化霜温升可降低多少比例？',
     options: {A: '42%', B: '32%', C: '22%', D: '12%'},
     answer: 'C',
@@ -700,6 +766,7 @@ const QUESTION_BANK = [
   {
     id: 's67',
     type: 'single',
+    section: '双系统 2.0',
     question: '美的双系统 2.0 食材温度波动可控制在多少℃以内？',
     options: {A: '≤0.9℃', B: '≤1.82℃', C: '≤8.9℃', D: '≤2.2℃'},
     answer: 'A',
@@ -708,6 +775,7 @@ const QUESTION_BANK = [
   {
     id: 's68',
     type: 'single',
+    section: '双系统 2.0',
     question: '美的双系统 2.0 肉类汁液流失率标准为',
     options: {A: '≤0.9%', B: '≤1.82%', C: '≤8.9%', D: '≤22%'},
     answer: 'B',
@@ -716,6 +784,7 @@ const QUESTION_BANK = [
   {
     id: 's69',
     type: 'single',
+    section: '双系统 2.0',
     question: '美的双系统 2.0 搭配哪一配件实时感知温度变化、按需供冷？',
     options: {A: '普通定频风机', B: '智控风机', C: '单层铝蒸发器', D: '基础加热丝'},
     answer: 'B',
@@ -724,6 +793,7 @@ const QUESTION_BANK = [
   {
     id: 'm70',
     type: 'multiple',
+    section: '双系统 2.0',
     question: '美的双系统 2.0 相比普通双系统，硬件升级包含哪些内容？',
     options: {A: '冷冻蒸发器增加航天级石墨烯导热疏水材料', B: '搭载智控风机，实时感知温度按需供冷', C: '仅采用普通铝片蒸发器，无额外升级', D: '硬件搭配智能算法协同控温'},
     answer: ["A", "B", "D"],
@@ -732,6 +802,7 @@ const QUESTION_BANK = [
   {
     id: 'm71',
     type: 'multiple',
+    section: '双系统 2.0',
     question: '美的双系统 2.0 三大核心保鲜数据指标包含',
     options: {A: '食材温度波动≤0.9℃', B: '汁液流失率≤1.82%', C: '挥发性盐基氮变化率≤8.9%', D: '化霜温升降低 42%'},
     answer: ["A", "B", "C"],
@@ -740,6 +811,7 @@ const QUESTION_BANK = [
   {
     id: 'm72',
     type: 'multiple',
+    section: '双系统 2.0',
     question: '传统普通双系统冰箱存在哪些行业痛点？',
     options: {A: '化霜时冷冻温度大幅波动，食材反复冻融', B: '仅基础铝蒸发器，排水、导热效率差', C: '无法精准控温，肉类汁液流失、营养流失', D: '彻底解决化霜温度波动，实现恒温保鲜'},
     answer: ["A", "B", "C"],
@@ -748,6 +820,7 @@ const QUESTION_BANK = [
   {
     id: 'j73',
     type: 'judge',
+    section: '双系统 2.0',
     question: '美的双系统 2.0 汁液流失率≤1.82%',
     answer: true,
     explanation: '正确答案：对',
@@ -755,6 +828,7 @@ const QUESTION_BANK = [
   {
     id: 'j74',
     type: 'judge',
+    section: '双系统 2.0',
     question: '美的双系统 2.0 能解决冷冻化霜温度波动问题',
     answer: true,
     explanation: '正确答案：对',
@@ -762,6 +836,7 @@ const QUESTION_BANK = [
   {
     id: 'j75',
     type: 'judge',
+    section: '双系统 2.0',
     question: '普通双系统蒸发器搭载航天级石墨烯疏水材料，恒温效果优于双系统 2.0',
     answer: false,
     explanation: '正确答案：错',
@@ -769,14 +844,16 @@ const QUESTION_BANK = [
   {
     id: 'e76',
     type: 'essay',
+    section: '双系统 2.0',
     question: '简述美的双系统 2.0 对比普通双系统的核心技术优势',
-    answer: '硬件升级：冷冻蒸发器增加航天级石墨烯导热及疏水材料，导热更快、排水高效，冷冻化霜温升降低 22%；搭配智控风机，实时感知温度、按需精准供冷。 恒温保鲜能力强：硬件 + 智能算法协同，根源解决化霜温度波动，食材温度波动≤0.9℃；肉类汁液流失率≤1.82%、挥发性盐基氮变化率≤8.9%，30 天肉类留存率高，避免反复冻融造成口感、营养流失。 美的主导行业首个双系统冰箱标准，区别于普通双系统仅能实现基础不串味，无恒温数据支撑的短板。 彻底解决行业痛点：根治传统双系统化霜大幅升温、食材冻融变质的问题，实现冷冻超智能恒温保鲜。 制冰机',
-    keywords: ["制冰机", "30", "食材冻融变质的问题", "搭配智控风机", "彻底解决行业痛点", "排水高效", "区别于普通双系统仅能实现基础不串味", "根源解决化霜温度波动", "硬件升级", "食材温度波动≤0.9℃", "冷冻化霜温升降低", "根治传统双系统化霜大幅升温", "冷冻蒸发器增加航天级石墨烯导热及疏水材料", "恒温保鲜能力强", "导热更快"],
+    answer: '硬件升级：冷冻蒸发器增加航天级石墨烯导热及疏水材料，导热更快、排水高效，冷冻化霜温升降低 22%；搭配智控风机，实时感知温度、按需精准供冷。 恒温保鲜能力强：硬件 + 智能算法协同，根源解决化霜温度波动，食材温度波动≤0.9℃；肉类汁液流失率≤1.82%、挥发性盐基氮变化率≤8.9%，30 天肉类留存率高，避免反复冻融造成口感、营养流失。 美的主导行业首个双系统冰箱标准，区别于普通双系统仅能实现基础不串味，无恒温数据支撑的短板。 彻底解决行业痛点：根治传统双系统化霜大幅升温、食材冻融变质的问题，实现冷冻超智能恒温保鲜。',
+    keywords: ["22%", "挥发性盐基氮变化率≤8.9%", "避免反复冻融造成口感", "按需精准供冷", "区别于普通双系统仅能实现基础不串味", "冷冻化霜温升降低", "根源解决化霜温度波动", "根治传统双系统化霜大幅升温", "硬件", "排水高效", "无恒温数据支撑的短板", "美的主导行业首个双系统冰箱标准", "食材温度波动≤0.9℃", "营养流失", "导热更快"],
     explanation: '硬件升级：冷冻蒸发器增加航天级石墨烯导热及疏水材料，导热更快、排水高效，冷冻化霜温升降低 22%；搭配智控风机，实时感知温度、按需精准供冷。 恒温保鲜能力强：硬件 + 智能算法协同，根源解决化霜温度波动，食材温度波动≤0.9℃；肉类汁液流失率≤1.82%、挥发性盐基氮变化率≤8.9%，30 天肉类留存率高，避免反复冻融造成口感、营养流失。 美的主导行业首个双系统冰箱标准，区别于普通双系统仅能实现基...',
   },
   {
     id: 's78',
     type: 'single',
+    section: '制冰机',
     question: '美的制冰机 MBJ-12B01E的24小时制冰量是多少？',
     options: {A: '12公斤', B: '13公斤', C: '15公斤', D: '17公斤'},
     answer: 'A',
@@ -785,6 +862,7 @@ const QUESTION_BANK = [
   {
     id: 's79',
     type: 'single',
+    section: '制冰机',
     question: '美的制冰机采用的阻燃等级是行业最高的多少？',
     options: {A: 'V-0', B: 'V-2'},
     answer: 'C',
@@ -793,6 +871,7 @@ const QUESTION_BANK = [
   {
     id: 'm80',
     type: 'multiple',
+    section: '制冰机',
     question: '关于美的制冰机售后政策的说法，正确的有：',
     options: {A: '官方渠道购买享受7天无理由退换', B: '性能故障365天以换代修（仅限首次购机）', C: '365天以换代修权益仍可重复享受', D: '全国超2000家美的售后网点，拨打400-889-9315可预约'},
     answer: ["A", "B", "D"],
@@ -801,6 +880,7 @@ const QUESTION_BANK = [
   {
     id: 'm82',
     type: 'multiple',
+    section: '制冰机',
     question: 'MBJ-12B01E 的核心卖点包括哪些？',
     options: {A: '6-8分钟快速出冰', B: '大小冰可调', C: '一键自动清洁', D: '支持WiFi远程控制'},
     answer: ["A", "B", "C"],
@@ -809,6 +889,7 @@ const QUESTION_BANK = [
   {
     id: 'j83',
     type: 'judge',
+    section: '制冰机',
     question: '制冰机可以加入果汁、可乐等饮料制冰，不影响机器寿命',
     answer: false,
     explanation: '正确答案：错',
@@ -816,6 +897,7 @@ const QUESTION_BANK = [
   {
     id: 'j84',
     type: 'judge',
+    section: '制冰机',
     question: '美的制冰机在标准工况下的测试条件为环境温度25°C、水温15°C',
     answer: true,
     explanation: '正确答案：对',
@@ -823,6 +905,7 @@ const QUESTION_BANK = [
   {
     id: 'j85',
     type: 'judge',
+    section: '制冰机',
     question: '美的作为世界500强品牌，售后服务更专业，保障性更强，24h客服在线服务，网点覆盖全国，2000+专业服务网点，对比小品牌（服务网点少，稳定性低，售后维修不变），美的具备极大优势',
     answer: true,
     explanation: '正确答案：对',
@@ -1586,6 +1669,153 @@ window.handleEssay = function(qid, val){
 // ── Init ───────────────────────────────────────────────────────
 updateNavStats();
 renderHome();
+renderBrowse();
+
+// ── Browse ────────────────────────────────────────────────────
+function renderBrowse(){
+  const container=document.getElementById('browseContent');
+  const sections=[...new Set(QUESTION_BANK.map(q=>q.section||'其他'))];
+  
+  let html='<h2 style="margin-bottom:16px">题库浏览</h2><div style="margin-bottom:16px">';
+  
+  // Filter controls
+  html+='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">';
+  html+='<input id="browseSearch" placeholder="搜索题目..." style="flex:1;min-width:200px;padding:8px 12px;border-radius:6px;border:1px solid var(--border);font-size:14px">';
+  html+='<select id="browseTypeFilter" style="padding:8px 12px;border-radius:6px;border:1px solid var(--border);font-size:14px;background:var(--surface)">';
+  html+='<option value="">全部题型</option><option value="single">单选题</option><option value="multiple">多选题</option><option value="judge">判断题</option><option value="essay">简答题</option>';
+  html+='</select>';
+  html+='<select id="browseSectionFilter" style="padding:8px 12px;border-radius:6px;border:1px solid var(--border);font-size:14px;background:var(--surface)">';
+  html+='<option value="">全部章节</option>';
+  sections.forEach(s=>{html+='<option value="'+escHtml(s)+'">'+escHtml(s)+'</option>'});
+  html+='</select>';
+  html+='</div></div>';
+  
+  // Stats
+  html+='<div class="stat-grid" style="margin-bottom:16px">';
+  html+='<div class="stat-card blue"><div class="num">'+QUESTION_BANK.length+'</div><div class="label">总题数</div></div>';
+  ['single','multiple','judge','essay'].forEach(t=>{
+    const cnt=QUESTION_BANK.filter(q=>q.type===t).length;
+    const labels={single:'单选题',multiple:'多选题',judge:'判断题',essay:'简答题'};
+    const colors={single:'var(--primary)',multiple:'var(--amber)',judge:'var(--green)',essay:'#be185d'};
+    html+='<div class="stat-card"><div class="num" style="color:'+colors[t]+'">'+cnt+'</div><div class="label">'+labels[t]+'</div></div>';
+  });
+  html+='</div>';
+  
+  // Sections expandable list
+  sections.forEach(s=>{
+    const qs=QUESTION_BANK.filter(q=>(q.section||'其他')===s);
+    html+='<div class="card" style="margin-bottom:8px;padding:0;overflow:hidden">';
+    html+='<div class="browse-section" data-section="'+escHtml(s)+'" style="padding:14px 18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:600;font-size:15px;border-bottom:1px solid var(--border)">';
+    html+='<span>📁 '+escHtml(s)+' <span style="font-weight:400;color:var(--text2);font-size:13px">'+qs.length+'题</span></span>';
+    html+='<span class="browse-arrow" style="transition:.2s">▶</span>';
+    html+='</div>';
+    html+='<div class="browse-questions" style="display:none;padding:8px 0"></div>';
+    html+='</div>';
+  });
+  
+  container.innerHTML=html;
+  
+  // Event listeners
+  document.getElementById('browseSearch').addEventListener('input', filterBrowse);
+  document.getElementById('browseTypeFilter').addEventListener('change', filterBrowse);
+  document.getElementById('browseSectionFilter').addEventListener('change', filterBrowse);
+  
+  document.querySelectorAll('.browse-section').forEach(el=>{
+    el.addEventListener('click', function(){
+      const body=this.nextElementSibling;
+      const arrow=this.querySelector('.browse-arrow');
+      const isOpen=body.style.display==='block';
+      body.style.display=isOpen?'none':'block';
+      arrow.style.transform=isOpen?'rotate(0deg)':'rotate(90deg)';
+      if(!isOpen&&body.children.length===0){
+        const section=this.dataset.section;
+        renderBrowseQuestions(section,body);
+      }
+    });
+  });
+}
+
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+function getTypeBadge(t){
+  const m={single:['单选题','single'],multiple:['多选题','multiple'],judge:['判断题','judge'],essay:['简答题','essay']};
+  const [label,cls]=m[t]||['?',''];
+  return '<span class="q-type '+cls+'">'+label+'</span>';
+}
+
+function renderBrowseQuestions(section,container){
+  let qs=QUESTION_BANK.filter(q=>(q.section||'其他')===section);
+  const typeFilter=document.getElementById('browseTypeFilter').value;
+  const searchQuery=document.getElementById('browseSearch').value.toLowerCase();
+  
+  if(typeFilter) qs=qs.filter(q=>q.type===typeFilter);
+  if(searchQuery) qs=qs.filter(q=>q.question.toLowerCase().includes(searchQuery));
+  
+  if(qs.length===0){
+    container.innerHTML='<div style="padding:20px;text-align:center;color:var(--text3)">暂无匹配题目</div>';
+    return;
+  }
+  
+  container.innerHTML=qs.map((q,i)=>{
+    let ansHtml='';
+    if(q.type==='single'){
+      const ans=q.answer;
+      ansHtml='<div style="margin-top:8px;font-size:13px">✅ 正确答案：<strong style="color:var(--green)">'+ans+'</strong> — '+escHtml(q.options[ans])+'</div>';
+    }else if(q.type==='multiple'){
+      const ans=Array.isArray(q.answer)?q.answer:[q.answer];
+      ansHtml='<div style="margin-top:8px;font-size:13px">✅ 正确答案：<strong style="color:var(--green)">'+ans.join('、')+'</strong></div>';
+    }else if(q.type==='judge'){
+      ansHtml='<div style="margin-top:8px;font-size:13px">✅ 正确答案：<strong style="color:var(--green)">'+(q.answer?'对':'错')+'</strong></div>';
+    }else if(q.type==='essay'){
+      ansHtml='<div style="margin-top:8px;font-size:13px">📝 参考回答：<span style="color:var(--primary)">'+escHtml(q.answer||'')+'</span></div>';
+    }
+    
+    let optsHtml='';
+    if(q.options){
+      optsHtml='<div style="margin-top:6px;font-size:13px;color:var(--text2)">'+Object.entries(q.options).map(([k,v])=>'<span style="margin-right:12px">'+k+'. '+escHtml(v)+'</span>').join('')+'</div>';
+    }
+    
+    return '<div style="padding:12px 14px;border-bottom:1px solid var(--border)">'+
+      '<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">'+
+      getTypeBadge(q.type)+
+      '<span style="font-size:12px;color:var(--text3)">#'+(i+1)+'</span>'+
+      '</div>'+
+      '<div style="font-size:14px;font-weight:500;margin-bottom:4px">'+escHtml(q.question)+'</div>'+
+      optsHtml+
+      ansHtml+
+      (q.explanation?'<div style="margin-top:6px;font-size:13px;color:var(--amber)">💡 '+escHtml(q.explanation)+'</div>':'')+
+      '</div>';
+  }).join('');
+}
+
+function filterBrowse(){
+  const sectionFilter=document.getElementById('browseSectionFilter').value;
+  if(sectionFilter){
+    const el=document.querySelector('.browse-section[data-section="'+escHtml(sectionFilter)+'"]');
+    if(el){
+      // Close all others, open this one
+      document.querySelectorAll('.browse-questions').forEach(b=>{b.style.display='none';b.previousElementSibling.querySelector('.browse-arrow').style.transform='rotate(0deg)'});
+      const body=el.nextElementSibling;
+      body.style.display='block';
+      el.querySelector('.browse-arrow').style.transform='rotate(90deg)';
+      renderBrowseQuestions(sectionFilter, body);
+    }
+  } else {
+    // Filter within all open sections
+    document.querySelectorAll('.browse-questions').forEach(body=>{
+      if(body.style.display==='block'){
+        const section=body.previousElementSibling.dataset.section;
+        renderBrowseQuestions(section, body);
+      }
+    });
+  }
+}
+
+// Add navigation handler
+document.querySelector('a[data-view="browse"]').addEventListener('click', function(){
+  showView('browse');
+  renderBrowse();
+});
 </script>
 </body>
 </html>
